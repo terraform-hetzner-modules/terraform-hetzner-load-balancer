@@ -22,15 +22,14 @@ A [Terraform module][module] to manage a [Hetzner Cloud][hetzner] Load Balancer,
 ```hcl
 module "load_balancer" {
   source = "terraform-hetzner-modules/load-balancer/hetzner"
-  name   = "web"
-  type   = "lb11"
 
+  name = "web"
+  type = "lb11"
   services = {
-    web = { protocol = "http", destination_port = 8080 }
+    http = { protocol = "http", destination_port = 8080 }
   }
   targets = {
-    app   = { type = "server", server_id = module.server.id }
-    fleet = { type = "label_selector", label_selector = "role=web" }
+    web = { type = "label_selector", label_selector = "role=web" }
   }
 }
 ```

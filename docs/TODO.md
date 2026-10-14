@@ -1,4 +1,4 @@
-# ✅ Terraform &lt;Provider&gt; Modules - `TODO`s
+# ✅ Terraform Hetzner Modules - `TODO`s
 
 ## ➕ Additions
 

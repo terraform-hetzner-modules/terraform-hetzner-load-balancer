@@ -4,8 +4,7 @@ Manage a Load Balancer with multiple services and targets, health checks, and op
 
 ## Usage
 
-Copy this configuration into `main.tf` and add the
-[provider configuration](#provider-configuration) below in `versions.tf`.
+Copy this configuration into `main.tf`.
 
 ```hcl
 module "load_balancer" {
@@ -24,28 +23,6 @@ module "load_balancer" {
 
 Servers labeled `role=web` must serve HTTP on port 8080 and accept health checks from the balancer.
 This configuration creates the infrastructure; backend software is configured separately.
-
-## Provider configuration
-
-Export your Hetzner API token as `HCLOUD_TOKEN`. Put the following in your calling root's `versions.tf`:
-
-```hcl
-terraform {
-  required_version = ">= 1.7"
-  required_providers {
-    hcloud = {
-      source  = "hetznercloud/hcloud"
-      version = "~> 1.70"
-    }
-  }
-}
-
-provider "hcloud" {}
-```
-
-With both files in place, run `terraform init`, `terraform plan`, and `terraform apply`.
-Credentials and provider configuration belong in the calling root.
-Terraform >= 1.7 and OpenTofu >= 1.8 are supported.
 
 ## Examples
 

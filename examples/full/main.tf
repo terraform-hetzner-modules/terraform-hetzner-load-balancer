@@ -32,7 +32,10 @@ module "load_balancer" {
   algorithm         = "least_connections"
   delete_protection = true
   labels            = { environment = "example" }
+  ipv4_id           = var.ipv4_id
+  ipv6_id           = var.ipv6_id
   network = {
+    network_id              = null # Alternatively set this ID and leave subnet_id null.
     subnet_id               = hcloud_network_subnet.backend.id
     ip                      = "10.0.1.5"
     enable_public_interface = true
